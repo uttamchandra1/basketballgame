@@ -1,8 +1,11 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
-canvas.width = 576;
-canvas.height = 1024;
+const averageScreenWidth = 360; // Default average screen width for mobile devices
+const averageScreenHeight = 640; // Default average screen height for mobile devices
+
+canvas.width = window.innerWidth < window.innerHeight ? window.innerWidth : averageScreenWidth;
+canvas.height = window.innerWidth < window.innerHeight ? window.innerHeight : averageScreenHeight;
 
 class PlayerBall {
     constructor() {
@@ -14,7 +17,7 @@ class PlayerBall {
         this.height = 100;
 
         this.image = new Image();
-        this.image.src = "basketball.jpg"
+        this.image.src = "basketball.webp"
     }
 
     draw() {
@@ -37,7 +40,7 @@ class basketballNet {
         this.height = 100;
 
         this.image = new Image();
-        this.image.src = "net.jpg"
+        this.image.src = "net.webp"
     }
 
     draw(){
@@ -58,7 +61,7 @@ function gameLoop() {
     // Clear the canvas
     c.clearRect(0, 0, canvas.width, canvas.height);
     const backgroundImage = new Image();
-    backgroundImage.src = 'background.jpg'; 
+    backgroundImage.src = 'background.webp'; 
     c.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     
 
